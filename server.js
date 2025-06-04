@@ -3,7 +3,7 @@ import pg from 'pg';
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt';
 
-const client = pg.Client(process.env.DATABASE_URL || 'the pg database credentials');
+const client = new pg.Client(process.env.DATABASE_URL || 'the pg database credentials');
 const app = express();
 const PORT = process.env.PORT;
 
