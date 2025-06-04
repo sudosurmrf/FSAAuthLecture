@@ -42,7 +42,7 @@ app.post('/register', async(req,res,next) => {
       RETURNING *;`,[name, email, hashedPassword]);
 
     if(!newUser) return res.status(401).send('could not make new user');
-    const token = jwt.sign({id: newUser.id, email: newUser.email});
+    const token = jwt.sign({id: newUser.id, email: newUser.email}, process.env.JWT_SECRET);
     res.status(201).json(token)
 
   }catch(err){
